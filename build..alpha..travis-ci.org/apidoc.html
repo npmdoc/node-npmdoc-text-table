@@ -1,0 +1,178 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/substack/text-table"
+
+    >text-table (v0.2.0)</a>
+</h1>
+<h4>borderless text tables with alignment</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.text-table">module text-table</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.text-table.text-table">
+            function <span class="apidocSignatureSpan"></span>text-table
+            <span class="apidocSignatureSpan">(rows_, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.text-table.toString">
+            function <span class="apidocSignatureSpan">text-table.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.text-table" id="apidoc.module.text-table">module text-table</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.text-table.text-table" id="apidoc.element.text-table.text-table">
+        function <span class="apidocSignatureSpan"></span>text-table
+        <span class="apidocSignatureSpan">(rows_, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">text-table = function (rows_, opts) {
+    if (!opts) opts = {};
+    var hsep = opts.hsep === undefined ? &#x27;  &#x27; : opts.hsep;
+    var align = opts.align || [];
+    var stringLength = opts.stringLength
+        || function (s) { return String(s).length; }
+    ;
+
+    var dotsizes = reduce(rows_, function (acc, row) {
+        forEach(row, function (c, ix) {
+            var n = dotindex(c);
+            if (!acc[ix] || n &#x3e; acc[ix]) acc[ix] = n;
+        });
+        return acc;
+    }, []);
+
+    var rows = map(rows_, function (row) {
+        return map(row, function (c_, ix) {
+            var c = String(c_);
+            if (align[ix] === &#x27;.&#x27;) {
+                var index = dotindex(c);
+                var size = dotsizes[ix] + (/\./.test(c) ? 1 : 2)
+                    - (stringLength(c) - index)
+                ;
+                return c + Array(size).join(&#x27; &#x27;);
+            }
+            else return c;
+        });
+    });
+
+    var sizes = reduce(rows, function (acc, row) {
+        forEach(row, function (c, ix) {
+            var n = stringLength(c);
+            if (!acc[ix] || n &#x3e; acc[ix]) acc[ix] = n;
+        });
+        return acc;
+    }, []);
+
+    return map(rows, function (row) {
+        return map(row, function (c, ix) {
+            var n = (sizes[ix] - stringLength(c)) || 0;
+            var s = Array(Math.max(n + 1, 1)).join(&#x27; &#x27;);
+            if (align[ix] === &#x27;r&#x27; || align[ix] === &#x27;.&#x27;) {
+                return s + c;
+            }
+            if (align[ix] === &#x27;c&#x27;) {
+                return Array(Math.ceil(n / 2 + 1)).join(&#x27; &#x27;)
+                    + c + Array(Math.floor(n / 2 + 1)).join(&#x27; &#x27;)
+                ;
+            }
+
+            return c + s;
+        }).join(hsep).replace(/\s+$/, &#x27;&#x27;);
+    }).join(&#x27;\n&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.text-table.toString" id="apidoc.element.text-table.toString">
+        function <span class="apidocSignatureSpan">text-table.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
