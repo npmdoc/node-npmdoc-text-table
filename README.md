@@ -1,6 +1,6 @@
 # npmdoc-text-table
 
-#### api documentation for  [text-table (v0.2.0)](https://github.com/substack/text-table)  [![npm package](https://img.shields.io/npm/v/npmdoc-text-table.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-text-table) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-text-table.svg)](https://travis-ci.org/npmdoc/node-npmdoc-text-table)
+#### basic api documentation for  [text-table (v0.2.0)](https://github.com/substack/text-table)  [![npm package](https://img.shields.io/npm/v/npmdoc-text-table.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-text-table) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-text-table.svg)](https://travis-ci.org/npmdoc/node-npmdoc-text-table)
 
 #### borderless text tables with alignment
 
@@ -78,7 +78,8 @@
             "ipad/6"
         ]
     },
-    "version": "0.2.0"
+    "version": "0.2.0",
+    "bin": {}
 }
 ```
 
